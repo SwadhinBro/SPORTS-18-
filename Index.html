@@ -13,7 +13,7 @@
         body {
             text-align: center;
             font-family: Arial, sans-serif;
-            background: url('https://source.unsplash.com/1600x900/?stadium,football') no-repeat center center fixed;
+            background: url('https://unsplash.com/photos/people-watching-game-of-cricket-during-sunset-mUtQXjjLPbw') no-repeat center center fixed;
             background-size: cover;
             color: white;
             margin: 0;
@@ -118,7 +118,7 @@
         var video = document.getElementById('liveStream');
         if (Hls.isSupported()) {
             var hls = new Hls();
-            hls.loadSource("https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"); // Replace with your actual M3U8 URL
+            hls.loadSource("https://jcevents.jiocinema.com/bpk-tv/Sports18_Khel_voot_MOB/Fallback/hdntl=exp=1739885725~acl=%2f*~id=bca7d45ea2c8fa3b7d61096ada28543d~data=hdntl~hmac=91c062b0b0495db399d1138620b7b7962d91e2ee72bc77eae7abd28c088e67c2/index.m3u8"); // Replace with your actual M3U8 URL
             hls.attachMedia(video);
             hls.on(Hls.Events.MANIFEST_PARSED, function() {
                 video.play();
