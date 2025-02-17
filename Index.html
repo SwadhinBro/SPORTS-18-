@@ -9,18 +9,16 @@
     <link href="https://cdn.jsdelivr.net/npm/video.js@8.0.4/dist/video-js.min.css" rel="stylesheet">
     
     <style>
-        /* General Styles */
         body {
             text-align: center;
             font-family: Arial, sans-serif;
-            background: url('https://unsplash.com/photos/people-watching-game-of-cricket-during-sunset-mUtQXjjLPbw') no-repeat center center fixed;
+            background: url('https://images.app.goo.gl/6EoPwhVjp49uHFqe8') no-repeat center center fixed;
             background-size: cover;
             color: white;
             margin: 0;
             padding: 0;
         }
 
-        /* CRIFYLIVE Title */
         .title {
             font-size: 35px;
             font-weight: bold;
@@ -30,7 +28,6 @@
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
         }
 
-        /* Player Container */
         .player-container {
             max-width: 800px;
             margin: 20px auto;
@@ -40,7 +37,6 @@
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
         }
 
-        /* Moving Telegram Text */
         .moving-text {
             position: absolute;
             top: 10px;
@@ -61,7 +57,6 @@
             text-decoration: none;
         }
 
-        /* Marquee Animation */
         @keyframes marquee {
             from { transform: translateX(100%); }
             to { transform: translateX(-100%); }
@@ -73,11 +68,10 @@
             animation: marquee 10s linear infinite;
         }
 
-        /* Video Player Aspect Ratio (16:9) */
         .video-container {
             position: relative;
             width: 100%;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            padding-top: 56.25%;
         }
 
         .video-container video {
@@ -92,39 +86,35 @@
 </head>
 <body>
 
-    <!-- CRIFYLIVE Heading -->
     <div class="title">CRIFYLIVE</div>
 
     <div class="player-container">
-        <!-- Moving Telegram Channel Name -->
         <div class="moving-text">
             <span><a href="https://t.me/CRICFyLive" target="_blank">📢 Join @YourChannel for Live Updates</a></span>
         </div>
 
-        <!-- Video Player -->
         <div class="video-container">
             <video id="liveStream" class="video-js vjs-default-skin" controls autoplay>
-                <!-- Example Live Stream (Replace with your URL) -->
-                <source src="https://jcevents.jiocinema.com/bpk-tv/Sports18_Khel_voot_MOB/Fallback/hdntl=exp=1739885725~acl=%2f*~id=bca7d45ea2c8fa3b7d61096ada28543d~data=hdntl~hmac=91c062b0b0495db399d1138620b7b7962d91e2ee72bc77eae7abd28c088e67c2/index.m3u8" type="application/x-mpegURL">
+                <!-- Valid Test Stream URL -->
+                <source src="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8" type="application/x-mpegURL">
                 Your browser does not support video playback.
             </video>
         </div>
     </div>
 
-    <!-- Video.js and hls.js for M3U8 Streaming -->
     <script src="https://cdn.jsdelivr.net/npm/video.js@8.0.4/dist/video.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script>
         var video = document.getElementById('liveStream');
         if (Hls.isSupported()) {
             var hls = new Hls();
-            hls.loadSource("https://jcevents.jiocinema.com/bpk-tv/Sports18_Khel_voot_MOB/Fallback/hdntl=exp=1739885725~acl=%2f*~id=bca7d45ea2c8fa3b7d61096ada28543d~data=hdntl~hmac=91c062b0b0495db399d1138620b7b7962d91e2ee72bc77eae7abd28c088e67c2/index.m3u8"); // Replace with your actual M3U8 URL
+            hls.loadSource("https://jiotvbpklive.cdn.jio.com/bpk-tv/IDCDemo_IPL23_Sports18_MOB/Fallback/index.m3u8"); // Test Stream URL
             hls.attachMedia(video);
             hls.on(Hls.Events.MANIFEST_PARSED, function() {
                 video.play();
             });
         } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-            video.src = "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"; // Replace with your actual M3U8 URL
+            video.src = "https://jiotvbpklive.cdn.jio.com/bpk-tv/IDCDemo_IPL23_Sports18_MOB/Fallback/index.m3u8"; // Test Stream URL
             video.addEventListener('loadedmetadata', function() {
                 video.play();
             });
