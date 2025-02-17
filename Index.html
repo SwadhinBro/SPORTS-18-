@@ -12,7 +12,7 @@
         body {
             text-align: center;
             font-family: Arial, sans-serif;
-            background: url('https://images.app.goo.gl/6EoPwhVjp49uHFqe8') no-repeat center center fixed;
+            background: url('https://images.unsplash.com/photo-1565577631-47c0bb5c193b') no-repeat center center fixed;
             background-size: cover;
             color: white;
             margin: 0;
@@ -71,7 +71,7 @@
         .video-container {
             position: relative;
             width: 100%;
-            padding-top: 56.25%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
         }
 
         .video-container video {
@@ -95,8 +95,8 @@
 
         <div class="video-container">
             <video id="liveStream" class="video-js vjs-default-skin" controls autoplay>
-                <!-- Valid Test Stream URL -->
-                <source src="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8" type="application/x-mpegURL">
+                <!-- Replace this URL with your valid stream URL -->
+                <source src="https://webplayer-live.pages.dev?url=https://jiotvbpklive.cdn.jio.com/bpk-tv/IDCDemo_IPL23_Sports18_MOB/Fallback/index.m3u8" type="application/x-mpegURL">
                 Your browser does not support video playback.
             </video>
         </div>
@@ -108,13 +108,13 @@
         var video = document.getElementById('liveStream');
         if (Hls.isSupported()) {
             var hls = new Hls();
-            hls.loadSource("https://jiotvbpklive.cdn.jio.com/bpk-tv/IDCDemo_IPL23_Sports18_MOB/Fallback/index.m3u8"); // Test Stream URL
+            hls.loadSource("https://webplayer-live.pages.dev?url=https://jiotvbpklive.cdn.jio.com/bpk-tv/IDCDemo_IPL23_Sports18_MOB/Fallback/index.m3u8"); // Updated Test Stream URL
             hls.attachMedia(video);
             hls.on(Hls.Events.MANIFEST_PARSED, function() {
                 video.play();
             });
         } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-            video.src = "https://jiotvbpklive.cdn.jio.com/bpk-tv/IDCDemo_IPL23_Sports18_MOB/Fallback/index.m3u8"; // Test Stream URL
+            video.src = "https://webplayer-live.pages.dev?url=https://jiotvbpklive.cdn.jio.com/bpk-tv/IDCDemo_IPL23_Sports18_MOB/Fallback/index.m3u8"; // Updated Test Stream URL
             video.addEventListener('loadedmetadata', function() {
                 video.play();
             });
